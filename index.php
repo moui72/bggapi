@@ -296,7 +296,7 @@ try{
   }
   print $json;
 }catch(cacheException $m){
-  print "{\n\t\"message\": \"".$m->getMessage().".\",\n\t\"status\": redtubere\n}";
+  print "{\n\t\"message\": \"".$m->getMessage().".\",\n\t\"status\": 202\n}";
 }catch(Exception $e){
   print "{\n\t\"error\": {\n\t\t\"message\": \"".$e->getMessage().".\"\n\t\t}\n\t}";
 }
