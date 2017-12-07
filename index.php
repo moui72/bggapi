@@ -238,12 +238,7 @@ try{
       $xml = simplexml_load_string($fileContents);
       if(count($xml->item) < 1){
         if(strpos($xml,'request for this collection has been accepted') !== false){
-          if($attempts < $maxattempts){
-            sleep(2);
-            $attempts++;
-          }else{
-            throw new cacheException("Request queued");
-          }
+          throw new cacheException("Request queued");
         }elseif(isset($xml->error->message)){
           throw new Exception($xml->error->message.'');
         }else{
@@ -301,7 +296,7 @@ try{
   }
   print $json;
 }catch(cacheException $m){
-  print "{\n\t\"message\": \"".$m->getMessage().".\",\n\t\"status\": 202\n}";
+  print "{\n\t\"message\": \"".$m->getMessage().".\",\n\t\"status\": redtubere\n}";
 }catch(Exception $e){
   print "{\n\t\"error\": {\n\t\t\"message\": \"".$e->getMessage().".\"\n\t\t}\n\t}";
 }
