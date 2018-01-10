@@ -233,7 +233,7 @@ try{
     while(true){
       $fileContents =
         file_get_contents("http://boardgamegeek.com/xmlapi2/collection?username=".
-        $_GET['username']."&stats=1");
+        urlencode($_GET['username'])."&stats=1");
       $fileContents = trim(str_replace('"', "'", $fileContents));
       $xml = simplexml_load_string($fileContents);
       if(count($xml->item) < 1){
@@ -263,7 +263,7 @@ try{
     // set isExpansion values with second call
     $expOnly =
       file_get_contents("http://boardgamegeek.com/xmlapi2/collection?username=".
-      $_GET['username']."&subtype=boardgameexpansion");
+      urlencode($_GET['username'])."&subtype=boardgameexpansion");
     $expXML = simplexml_load_string($expOnly);
     foreach($expXML->item as $index => $exp){
       $game = $collection[$hash[$exp['objectid'] * 1]];
